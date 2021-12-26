@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns="http://jmix.io/schema/rest/services">
+    <service name="array_rest_service">
+        <method name="saveArr">
+            <param name="arrayFirst"/>
+        </method>
+        <method name="computeArr">
+            <param name="arrayFirst"/>
+            <param name="arraySecond"/>
+        </method>
+    </service>
+
+    <service name="square_rest_service">
+        <method name="saveSquare">
+            <param name="cube1"/>
+            <param name="cube2"/>
+            <param name="cube3"/>
+            <param name="cube4"/>
+            <param name="cube5"/>
+            <param name="cube6"/>
+            <param name="cube7"/>
+            <param name="cube8"/>
+            <param name="cube9"/>
+        </method>
+        <method name="computeSquare">
+            <param name="cube1"/>
+            <param name="cube2"/>
+            <param name="cube3"/>
+            <param name="cube4"/>
+            <param name="cube5"/>
+            <param name="cube6"/>
+            <param name="cube7"/>
+            <param name="cube8"/>
+            <param name="cube9"/>
+        </method>
+    </service>
+</services>

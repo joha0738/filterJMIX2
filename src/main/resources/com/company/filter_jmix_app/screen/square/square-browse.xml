@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://squareBrowse.caption"
+        focusComponent="squaresTable">
+    <data readOnly="true">
+        <collection id="squaresDc"
+                    class="com.company.filter_jmix_app.entity.Square">
+            <fetchPlan extends="_base"/>
+            <loader id="squaresDl">
+                <query>
+                    <![CDATA[select e from Square e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="squaresTable" spacing="true">
+        <hbox spacing="true">
+            <valuesPicker id="squarePicker">
+                <actions>
+                    <action id="values_select" type="values_select" icon="PLUS_SQUARE">
+                        <properties>
+                            <property name="entityName" value="Square"/>
+                            <property name="useComboBox" value="true"/>
+                        </properties>
+                    </action>
+                    <action id="value_clear" type="value_clear"/>
+                </actions>
+            </valuesPicker>
+            <button caption="&#1042;&#1099;&#1073;&#1088;&#1072;&#1090;&#1100; &#1082;&#1074;&#1072;&#1076;&#1088;&#1072;&#1090;"
+                    id="pickSquare"/>
+        </hbox>
+        <hbox spacing="true">
+            <vbox spacing="true" width="auto" id="rer">
+                <hbox spacing="true">
+                    <textField width="50" id="cube1" datatype="int">
+                        <formatter>
+                            <number/>
+                        </formatter>
+                    </textField>
+                    <textField width="50" id="cube2" datatype="int">
+                        <formatter>
+                            <number/>
+                        </formatter>
+                    </textField>
+                    <textField width="50" id="cube3" datatype="int">
+                        <formatter>
+                            <number/>
+                        </formatter>
+                    </textField>
+                </hbox>
+                <hbox spacing="true">
+                    <textField width="50" id="cube4" datatype="int">
+                        <formatter>
+                            <number/>
+                        </formatter>
+                    </textField>
+                    <textField width="50" id="cube5" datatype="int">
+                        <formatter>
+                            <number/>
+                        </formatter>
+                    </textField>
+                    <textField width="50" id="cube6" datatype="int">
+                        <formatter>
+                            <number/>
+                        </formatter>
+                    </textField>
+                </hbox>
+                <hbox spacing="true">
+                    <textField width="50" id="cube7" datatype="int">
+                        <formatter>
+                            <number/>
+                        </formatter>
+                    </textField>
+                    <textField width="50" id="cube8" datatype="int">
+                        <formatter>
+                            <number/>
+                        </formatter>
+                    </textField>
+                    <textField width="50" id="cube9" datatype="int">
+                        <formatter>
+                            <number/>
+                        </formatter>
+                    </textField>
+                </hbox>
+            </vbox>
+            <textField align="MIDDLE_CENTER" width="150" editable="false"
+                       inputPrompt="&#1056;&#1077;&#1079;&#1091;&#1083;&#1100;&#1090;&#1072;&#1090;:" id="costField"/>
+            <vbox spacing="true">
+                <hbox spacing="true">
+                    <textField width="50" editable="false" id="res1"/>
+                    <textField width="50" editable="false" id="res2"/>
+                    <textField width="50" editable="false" id="res3"/>
+                </hbox>
+                <hbox spacing="true">
+                    <textField width="50" editable="false" id="res4"/>
+                    <textField width="50" editable="false" id="res5"/>
+                    <textField width="50" editable="false" id="res6"/>
+                </hbox>
+                <hbox spacing="true">
+                    <textField width="50" editable="false" id="res7"/>
+                    <textField width="50" editable="false" id="res8"/>
+                    <textField width="50" editable="false" id="res9"/>
+                </hbox>
+            </vbox>
+        </hbox>
+        <groupTable id="squaresTable"
+                    width="100%"
+                    dataContainer="squaresDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="cube"/>
+                <column id="type"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="saveBtn" caption="&#1057;&#1086;&#1093;&#1088;&#1072;&#1085;&#1080;&#1090;&#1100;"/>
+                <button id="computeSquare" caption="&#1055;&#1086;&#1089;&#1095;&#1080;&#1090;&#1072;&#1090;&#1100;"/>
+                <button id="removeBtn" action="squaresTable.remove"/>
+                <button id="loadFile"
+                        caption="&#1069;&#1082;&#1089;&#1087;&#1086;&#1088;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1090;&#1100;"
+                        icon="DOWNLOAD"/>
+                <fileStorageUpload id="uploadFile" fileStoragePutMode="MANUAL"
+                                   uploadButtonCaption="&#1048;&#1084;&#1087;&#1086;&#1088;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1090;&#1100;"
+                                   uploadButtonIcon="UPLOAD"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

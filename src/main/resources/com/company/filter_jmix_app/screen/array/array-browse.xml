@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://arrayBrowse.caption"
+        focusComponent="arraysTable">
+    <data readOnly="true">
+        <collection id="arraysDc"
+                    class="com.company.filter_jmix_app.entity.Array">
+            <fetchPlan extends="_base"/>
+            <loader id="arraysDl">
+                <query>
+                    <![CDATA[select e from Array_ e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="arraysTable" spacing="true">
+        <hbox spacing="true">
+            <valuesPicker id="arrayFirst" caption="Array 1">
+                <actions>
+                    <action id="values_select" type="values_select" icon="font-icon:PENCIL">
+                        <properties>
+                            <property name="javaClass" value="java.lang.String"/>
+                        </properties>
+                    </action>
+                    <action id="select" type="values_select" icon="ANGLE_DOUBLE_DOWN">
+                        <properties>
+                            <property name="entityName" value="Array_"/>
+                            <property name="useComboBox" value="true"/>
+                        </properties>
+                    </action>
+                    <action id="value_clear" type="value_clear"/>
+                </actions>
+            </valuesPicker>
+            <valuesPicker id="arraySecond" caption="Array 2">
+                <actions>
+                    <action id="values_select" type="values_select" icon="PENCIL">
+                        <properties>
+                            <property name="javaClass" value="java.lang.String"/>
+                        </properties>
+                    </action>
+                    <action id="select" type="values_select" icon="ANGLE_DOUBLE_DOWN">
+                        <properties>
+                            <property name="entityName" value="Array_"/>
+                            <property name="useComboBox" value="true"/>
+                        </properties>
+                    </action>
+                    <action id="value_clear" type="value_clear"/>
+                </actions>
+            </valuesPicker>
+            <textField id="resultField" caption="Result" editable="false"/>
+        </hbox>
+        <groupTable id="arraysTable"
+                    width="100%"
+                    dataContainer="arraysDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="add" type="add"/>
+                <action id="save" icon="SAVE"/>
+            </actions>
+            <columns>
+                <column id="string"/>
+                <column id="type"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="saveBtn" action="arraysTable.save"
+                        caption="&#1057;&#1086;&#1093;&#1088;&#1072;&#1085;&#1080;&#1090;&#1100;"/>
+                <button id="computeBtn" icon="font-icon:CHECK_CIRCLE"
+                        caption="&#1054;&#1090;&#1089;&#1086;&#1088;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1090;&#1100;"/>
+                <button id="removeBtn" action="arraysTable.remove"/>
+                <button caption="&#1069;&#1082;&#1089;&#1087;&#1086;&#1088;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1090;&#1100;"
+                        id="loadFile" icon="DOWNLOAD"/>
+                <fileStorageUpload fileStoragePutMode="MANUAL" id="uploadFile"
+                                   uploadButtonCaption="&#1048;&#1084;&#1087;&#1086;&#1088;&#1090;&#1080;&#1088;&#1086;&#1074;&#1072;&#1090;&#1100;"
+                                   uploadButtonIcon="UPLOAD"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>
