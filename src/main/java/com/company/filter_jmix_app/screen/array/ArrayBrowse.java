@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.Arrays;
 
 @UiController("Array_.browse")
 @UiDescriptor("array-browse.xml")
@@ -42,8 +43,8 @@ public class ArrayBrowse extends StandardLookup<Array> {
 
     @Subscribe("computeBtn")
     public void onComputeBtnClick(Button.ClickEvent event) {
-      String result = arrayService.computeArr(arrayFirst.getValue().toString().substring(1,arrayFirst.getValue().toString().length()-1)
-                                             ,arraySecond.getValue().toString().substring(1,arraySecond.getValue().toString().length()-1));
+      String result = arrayService.computeArr(Arrays.stream(arrayFirst.getValue().toString().substring(1,arrayFirst.getValue().toString().length()-1).split(", ")).toList()
+                                             , Arrays.stream(arraySecond.getValue().toString().substring(1,arraySecond.getValue().toString().length()-1).split(", ")).toList());
       resultField.setValue(result);
     }
 

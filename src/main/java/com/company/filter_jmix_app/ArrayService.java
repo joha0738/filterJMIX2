@@ -38,15 +38,15 @@ public class ArrayService {
         return array;
     }
 
-    public String computeArr(String arrayFirst, String arraySecond) {
+    public String computeArr(List<String> arrayFirst, List<String> arraySecond) {
         List<String> result = new ArrayList<>();
 
-        String firsta = arrayFirst;
-        List<String> o = Arrays.stream(firsta.split(", ")).toList();
-
-        String seconda = arraySecond;
-        List<String> d = Arrays.stream(seconda.split(", ")).toList();
-
+//        String firsta = arrayFirst;
+//        List<String> o = Arrays.stream(firsta.split(", ")).toList();
+        List<String> o = arrayFirst;
+//        String seconda = arraySecond;
+//        List<String> d = Arrays.stream(seconda.split(", ")).toList();
+        List<String> d = arraySecond;
         for (String f : o) {
             for (String a : d) {
                 if (a.contains(f))
